@@ -1,9 +1,9 @@
 #!/bin/bash
 
-##########################################################################
+source ./config.sh
 
 if [ ! -e "$BACKUPFOLDER" ]; then
-	mkdir -p $BACKUPFOLDER
+	mkdir -p $BACKUPFOLDER/`date +%Y%m%d`
 fi
 
 DAYS=$(DAYS-1)
@@ -21,6 +21,6 @@ do
   if [ "$CRYPT" == "true" ]; then
     $CMDDUMP $db | $CMDCRYPT $BACKUPFOLDER/$db-$DUMPNAME.gpg
   else
-    $CMDDUMP $db > $BACKUPFOLDER/$db-$DUMPNAME
+    $CMDDUMP $db | gzip -c > $BACKUPFOLDER/$db-$DUMPNAME.gz
   fi
 done
