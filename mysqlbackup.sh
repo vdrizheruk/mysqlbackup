@@ -3,10 +3,10 @@
 source ./config.sh
 
 if [ ! -e "$BACKUPFOLDER" ]; then
-	mkdir -p $BACKUPFOLDER/`date +%Y%m%d`
+	mkdir -p $BACKUPFOLDER
 fi
 
-DAYS=$(DAYS-1)
+DAYS=$((DAYS-1))
 cd $BACKUPFOLDER
 find $DUMPPREFIX* -mtime +$DAYS -exec rm -f {} \;
 
