@@ -8,7 +8,7 @@ fi
 
 DAYS=$((DAYS-1))
 cd $BACKUPFOLDER
-find $DUMPPREFIX* -mtime +$DAYS -exec rm -f {} \;
+find ../* -mtime +$DAYS -exec rm -f {} \;
 
 if [ "$DBNAME" == '*' ]; then
 	DBLIST=`echo "show databases" | mysql -N -u $USER -p$PASSWD`
