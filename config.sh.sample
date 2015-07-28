@@ -7,5 +7,5 @@ CRYPT="false"
 DAYS=7
 DUMPNAME="`date +%Y%m%d%H%M%S`.sql"
 
-CMDDUMP="/usr/bin/mysqldump --single-transaction -u $USER -p$PASSWD"
+CMDDUMP="/usr/bin/mysqldump --routines --single-transaction -u $USER -p$PASSWD"
 CMDCRYPT="/usr/bin/gpg -e -q -r $GPGKEY -o "
